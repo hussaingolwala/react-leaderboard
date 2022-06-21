@@ -14,8 +14,10 @@ const Div = styled.div`
   margin-top: ${(props) => props.mt};
   display: flex;
   align-items: center;
-  height: 65px;
-  background-color: ${(props) => (props.bg === "white" ? "white" : "#4663b9")};
+  height: 4rem;
+  /* background-color: ${(props) => (props.bg === "white" ? "white" : "#4663b9")}; */
+  tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
 `;
 
 const Name = styled.div`
@@ -36,6 +38,10 @@ const Points = styled.div`
   letter-spacing: 1.5px;
   margin-right: 0.5%;
   color: ${(props) => (props.color === "black" ? "black" : "white")};
+
+  @media (max-width: 768px) {
+    padding-right: 1.5%;
+}
 `;
 
 
@@ -46,6 +52,12 @@ const Point = styled.div`
   font-weight: 200;
   padding-right: 1.5%;
   color: ${(props) => (props.color === "black" ? "black" : "white")};
+
+  left: 30px;
+
+@media (max-width: 768px) {
+   display: none;
+}
 `;
 
 function Board() {
@@ -85,7 +97,7 @@ function Board() {
     <>
       {dataOne.map((userID) => (
         <Container key={userID}>
-          <Div mt="0.5%" bg="white"> 
+          <Div mt="0.5%" bg="white">
             <Content src={userID.picture}>
             </Content>
             <Name color="black">{userID.displayName}</Name>
